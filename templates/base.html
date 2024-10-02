@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>약국 리뷰</title>
+</head>
+<body>
+<h2>약국 리뷰</h2>
+
+<nav>
+    {% if user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">로그아웃</button>
+    </form> <br> <br>
+    <a href="{% url 'review_list' pharmacy_id=1 %}">리뷰 목록 보기</a><br>
+
+    {% else %}
+    <a href="{% url 'login' %}">로그인</a> <br>
+    <a href="{% url 'register' %}">회원가입</a> <br>
+    <form action="{% url 'login' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">로그인</button>
+    </form>
+    {% endif %}
+</nav>
+
+<footer>
+    {% if user.is_authenticated %}
+    <br>
+    <a href="{% url 'dashboard' %}">대시보드</a>
+    {% endif %}
+</footer>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+</body>
+</html>

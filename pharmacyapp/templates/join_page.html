@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="signup-form">
+        <h2>회원가입</h2>
+        <form>
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요">
+
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+
+            <label for="confirm-password">비밀번호 확인</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호를 다시 입력하세요">
+
+            <label>성별</label>
+            <div class="gender">
+                <label><input type="radio" name="gender" value="male"> 남성</label>
+                <label><input type="radio" name="gender" value="female"> 여성</label>
+            </div>
+
+            <label for="dob">생년월일</label>
+            <input type="date" id="dob" name="dob">
+
+            <label><input type="checkbox" name="terms"> 약관에 동의합니다</label>
+
+            <button type="submit">회원가입</button>
+        </form>
+    </div>
+</body>
+</html>

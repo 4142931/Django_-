@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>평점 목록</h2>
+{% for review in reviews %}
+    <div>
+        <p>{{ review.content }}</p>
+        <a href="{% url 'review_delete' review.id %}">삭제</a>
+    </div>
+{% endfor %}
+{% endblock %}
