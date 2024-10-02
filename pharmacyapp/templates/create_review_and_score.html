@@ -1,12 +1,16 @@
 {% extends 'template/base.html' %}
-{% block title %}평점 입력{% endblock %}
+{% block title %}리뷰 작성{% endblock %}
 {% block content %}
 
 <form method="post">
     {% csrf_token %}
+    <h2>리뷰 작성</h2>
+    {{ board_form.as_p }}
+
     <h2>평점 입력</h2>
     {{ score_form.as_p }}
-    <button type="submit">평점 제출</button>
+
+    <button type="submit">제출</button>
 </form>
 
 {% endblock %}

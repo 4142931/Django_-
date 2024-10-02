@@ -9,33 +9,30 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-def create_review(request, pharmacy_id):
+
+def create_review_and_score(request, pharmacy_id):
     if request.method == 'POST':
         board_form = BoardForm(request.POST)
-        if board_form.is_valid():
+        score_form = ScoreForm(request.POST)
+        if board_form.is_valid() and score_form.is_valid():
             board = board_form.save()
             board.user = request.user
             board.pname_id = pharmacy_id
             board.save()
-            return redirect('list_review')  # list에 맞게 수정
+
+            score = score_form.save()
+            score.p_id = pharmacy_id
+            score.save()
+
+            return redirect('list_review')
     else:
         board_form = BoardForm()
-    return render(request, 'review_create.html', {'board_form': board_form})
-
-
-def create_score(request, pharmacy_id):
-    if request.method == 'POST':
-        score_form = ScoreForm(request.POST)
-        if score_form.is_valid():
-            score = score_form.save(commit=False)
-            score.user = request.user
-            score.pharmacy_id = pharmacy_id
-            score.save()
-            return redirect('pharmacy_detail', pk=pharmacy_id)
-    else:
         score_form = ScoreForm()
-    return render(request, 'score_create.html', {'score_form': score_form})
 
+    return render(request, 'create_review_and_score.html', {
+        'board_form': board_form,
+        'score_form': score_form
+    })
 
 #전체 게시글 조회
 def review_list_view(request):
