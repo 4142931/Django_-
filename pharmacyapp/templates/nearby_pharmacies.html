@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>근처 약국 찾기</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="address" placeholder="주소를 입력하세요" required>
+    <button type="submit">검색</button>
+</form>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+{% if pharmacies %}
+    <h2>"{{ address }}" 주변 약국 목록</h2>
+    <ul>
+    {% for item in pharmacies %}
+        <li>
+            {{ item.pharmacy.pname }} - 거리: {{ item.distance }}km<br>
+            주소: {{ item.pharmacy.paddr }}
+        </li>
+    {% endfor %}
+    </ul>
+{% elif address %}
+    <p>주변에 약국이 없습니다.</p>
+{% endif %}
+{% endblock %}

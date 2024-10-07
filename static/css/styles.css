@@ -1,0 +1,85 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f0f8ff;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #4a90e2 !important;
+    border-bottom: 3px solid #3a7bc8;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+.login-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 50px auto;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 3px solid #4a90e2;
+}
+
+.login-title {
+    font-family: 'Jua', sans-serif;
+    color: #4a90e2;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    border: 2px solid #4a90e2;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-login {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 0 #3a7bc8;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+}
+
+.btn-login:hover {
+    background-color: #3a7bc8;
+    border-color: #3a7bc8;
+    top: 2px;
+    box-shadow: 0 2px 0 #2a6cb8;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

@@ -1,12 +1,5 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
@@ -29,17 +22,28 @@ class Pharmacy(models.Model):
         managed = False
         db_table = 'pharmacy'
 
+    def __str__(self):
+        return self.pname
+
 
 class Board(models.Model):
-    pname = models.ForeignKey(Pharmacy, on_delete=models.CASCADE, db_column='pname')
+    board_id = models.AutoField(primary_key=True)
+    pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE, related_name='boards', to_field='p_id')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=20, blank=True, null=True)
     content = models.CharField(max_length=100, blank=True, null=True)
-    uptime = models.DateTimeField(blank=True, null=True)
+    uptime = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'board'
-        unique_together = (('pname', 'user'),)
+
+    def __str__(self):
+        return f"{self.board_id}: {self.title}"
+
+    @property
+    def pname(self):
+        return self.pharmacy.pname if self.pharmacy else None
+
 
 
 class Score(models.Model):
@@ -53,4 +57,3 @@ class Score(models.Model):
     class Meta:
         managed = False
         db_table = 'score'
-
